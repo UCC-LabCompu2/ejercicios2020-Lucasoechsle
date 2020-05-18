@@ -34,4 +34,16 @@ function cambiarUnidades(id , valor){
         document.lasUnidades.unid_metro.value = 0.3048*valor;
         document.lasUnidades.unid_yarda.value = 0.333333*valor;
     }
+    function convertirGr(id){
+        var grad, rad;
+        if(id=="grados"){
+            grad = document.getElementById( elementld: "grados").value;
+            rad = (grad*Math.PI)/180;
+        } else if(id=="radianes"){
+            rad =document.getElementById(elementld: "radianes").value;
+            grad = (rad*180)/Math.PI
+        }
+        document.getElementById(elementld: "grados").value = grad;
+        document.getElementById(elementld: "radianes").value = rad;
+    }
 }
