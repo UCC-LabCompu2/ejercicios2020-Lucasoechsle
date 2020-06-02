@@ -9,31 +9,41 @@
  * @param {number} valor - El valor de llos inputs de metros , yardas , pies o pulgadas.
  * @return
  */
-function cambiarUnidades(id , valor){
-    if(isNaN(valor)){
-        alert("Se ingreso un valor invalido");
-        document.lasUnidades.unid_metro.value = "";
-        document.lasUnidades.unid_yarda.value = "";
-        document.lasUnidades.unid_pulgada.value = "";
-        document.lasUnidades.unid_pie.value = "";
-
-    } else if (id=="metro"){
-        document.lasUnidades.unid_pulgada.value = 39.3701*valor;
-        document.lasUnidades.unid_pie.value = 3.28084*valor;
-        document.lasUnidades.unid_yarda.value = 1.09361*valor;
-    }else if (id=="yarda"){
-        document.lasUnidades.unid_pulgada.value = 36*valor;
-        document.lasUnidades.unid_pie.value = 3*valor;
-        document.lasUnidades.unid_metro.value = 0.9144*valor;
-    }else if (id=="pulgada") {
-        document.lasUnidades.unid_metro.value = 0.0254*valor;
-        document.lasUnidades.unid_pie.value = 0.0833333*valor;
-        document.lasUnidades.unid_yarda.value = 0.0277778*valor;
-    }else if (id=="pie") {
-        document.lasUnidades.unid_pulgada.value = 12*valor;
-        document.lasUnidades.unid_metro.value = 0.3048*valor;
-        document.lasUnidades.unid_yarda.value = 0.333333*valor;
+function cambiarUnidades( {
+    var metro, pulgada, pie, yarda;
+    if (valor.includes(",")) {
+        valor = valor.replace(","".")
     }
+    if (isNaN(valor)) {
+        alert("Se ingreso un valor invalido" + id);
+
+    } else if (id == "metro") {
+        metro = valor;
+        pulgada = 39.3701 * valor;
+        pie = 3.28082 * valor;
+        yarda = 1.09361 * valor;
+    } else if (id == "pulgada") {
+        pulgada = valor;
+        metro = 0.0254 * valor;
+        pie = 0.08333333 * valor;
+        yarda = 0.0277778 * valor;
+    } else if (id == "yarda") {
+        yarda = valor;
+        metro = 0.9144 * valor;
+        pulgada = 36 * valor;
+        pie = 3 * valor;
+    } else if (id == "pie") {
+        pie = valor;
+        metro = 0.30488
+        valor;
+        pulgada = 12 * valor;
+        yarda = 0.33 * valor;
+    }
+    document.lasUnidades.unid_metro.value = Math.round(x:metro*100)/100;
+    document.lasUnidades.unid_yarda.value = Math.round(X:yarda*100)/100;
+    document.lasUnidades.unid_pulgada.value = Math.round(X:pulgada*100)/100;
+    document.lasUnidades.unid_pie.value = Math.round(X:pie*100)/100;
+}
     function convertirGr(id){
         var grad, rad;
         if(id=="grados"){
@@ -47,7 +57,7 @@ function cambiarUnidades(id , valor){
         document.getElementById(elementld: "radianes").value = rad;
     }
 }
-function mos(valorMO) {
+function mostrar_ocultar(valorMO) {
     if(valorMO=="val_mostrar"){
         document.getElementById("divMO").style.display = 'block';
     }else if(valorMO=="val_ocultar"){
@@ -59,18 +69,38 @@ function calcularSuma(){
     var num1, num2;
     num1= Number(document.getElementsByName( elementName: "sum_num1")[0].value);
     num2= Number(document.getElementsByName( elementName: "sum_num2")[0].value);
-    document.getElementsByName( elementName: "sum_total")[0].value = num1 + num1 ;
+    document.getElementsByName( elementName: "sum_total")[0].innerHTML = num1 + num1 ;
 }
 function calcularResta(){
     var num1, num2;
     num1= Number(document.getElementsByName( elementName: "res_num1")[0].value);
     num2= Number(document.getElementsByName( elementName: "res_num2")[0].value);
-    document.getElementsByName( elementName: "res_total")[0].value= num1 - Number (num2);
+    document.getElementsByName( elementName: "res_total")[0].innerHTML= num1 - Number (num2);
 }
 function calcularmult(){
     var num1,num2;
     num1= Number(document.getElementsByName( elementName: "mul_num1")[0].value);
     num2= Number(document.getElementsByName( elementName: "mul_num1")[0].value);
-    documennt.getElementsByName( elementName: "mul_total")[0].value=num1 * num2 ;
+    document.getElementsByName( elementName: "mul_total")[0].innerHTML=num1 * num2 ;
 
 }
+function calculardiv(){
+    var num1,num2;
+    num1= Number(document.getElementsByName( elementName: "div_num1")[0].value);
+    num2= Number(document.getElementsByName( elementName: "div_num1")[0].value);
+    document.getElementsByName( elementName: "div_total")[0].innerHTML=num1 / num2 ;
+
+}
+function cargarWeb() {
+    var cant, unidad, urlComp;
+    cant = document.getElementById("distancia").value;
+    unidad = document.getElementsByName("unidades")[0].value;
+    urlComp  = "segundaWeb.html#" + cant + "#" + unidad;
+    window.open(urlComp);
+}
+function cargarResultado() {
+var urlComp, can, un;
+urlComp= window.location.href.split ("/")[5];
+can= urlComp.split("#")[1];
+un = urlComp.split("#")[2];
+document.getElementById("dist").value = can + " " + un;
