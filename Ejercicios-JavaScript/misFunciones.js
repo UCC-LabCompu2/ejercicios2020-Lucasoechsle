@@ -47,3 +47,30 @@ function cambiarUnidades(id , valor){
         document.getElementById(elementld: "radianes").value = rad;
     }
 }
+function mos(valorMO) {
+    if(valorMO=="val_mostrar"){
+        document.getElementById("divMO").style.display = 'block';
+    }else if(valorMO=="val_ocultar"){
+        document.getElementById("divMO").style.display = 'none';
+    }
+
+}
+function calcularSuma(){
+    var num1, num2;
+    num1= Number(document.getElementsByName( elementName: "sum_num1")[0].value);
+    num2= Number(document.getElementsByName( elementName: "sum_num2")[0].value);
+    document.getElementsByName( elementName: "sum_total")[0].value = num1 + num1 ;
+}
+function calcularResta(){
+    var num1, num2;
+    num1= Number(document.getElementsByName( elementName: "res_num1")[0].value);
+    num2= Number(document.getElementsByName( elementName: "res_num2")[0].value);
+    document.getElementsByName( elementName: "res_total")[0].value= num1 - Number (num2);
+}
+function calcularmult(){
+    var num1,num2;
+    num1= Number(document.getElementsByName( elementName: "mul_num1")[0].value);
+    num2= Number(document.getElementsByName( elementName: "mul_num1")[0].value);
+    documennt.getElementsByName( elementName: "mul_total")[0].value=num1 * num2 ;
+
+}
