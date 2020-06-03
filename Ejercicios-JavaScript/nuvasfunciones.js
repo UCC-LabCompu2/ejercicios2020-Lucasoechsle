@@ -1,3 +1,15 @@
+/**
+ * Created by Agus on 6/5/2017.
+ */
+
+/**
+ * Conversion de unidades , de metros , yardas , pies y pulgadas.
+ * @method cambiarUnidades
+ * @param {srting} id - El id de los inputs de metros ,, yardas , pies o pulgadas.
+ * @param {number} valor - El valor de llos inputs de metros , yardas , pies o pulgadas.
+ * @return
+ */
+
 function dibujarCuadriculado() {
     var canvas = document.getElementById("myCanvas");
     var ctx = canvas.getContext("2d");
@@ -38,6 +50,16 @@ function dibujarCuadriculado() {
     ctx.strokeStyle = "#3e67d9";
     ctx.stroke();
     ctx.closePath();
-
+}
+function dibujarImagen(posX, posY){
+    var canvas = document.getElementById("mycanvas");
+    var ctx = canvas.getContext("2d");
+    console.log(posX, posY);
+    var img = new Image();
+    img.src = "images/auto.png";
+    canvas.width = canvas.width;
+    img.onload = function(){
+        ctx.drawImage(img,posX,posY);
+    }
 
 }
