@@ -99,8 +99,23 @@ function cargarWeb() {
     window.open(urlComp);
 }
 function cargarResultado() {
-var urlComp, can, un;
-urlComp= window.location.href.split ("/")[5];
-can= urlComp.split("#")[1];
-un = urlComp.split("#")[2];
-document.getElementById("dist").value = can + " " + un;
+    var urlComp, can, un;
+    urlComp = window.location.href.split("/")[5];
+    can = urlComp.split("#")[1];
+    un = urlComp.split("#")[2];
+    document.getElementById("dist").value = can + " " + un;
+}
+
+function dibujarCirCuad(){
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext ("2d");
+    var xMax = canvas.width;
+   var yMax  = canvas.height;
+   var margen = 5;
+    ctx.fillStyle = "#890806";
+    ctx.fillRect(0+margen,yMax-40-margen,40,40);
+    ctx.arc(xMax/2,yMax/2,40,0,2*Math.PI);
+    ctx.stroke();
+    ctx.fillStyle= "#877728";
+    ctx.fill();
+}
